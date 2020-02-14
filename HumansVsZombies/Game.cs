@@ -48,12 +48,12 @@ namespace HumansVsZombies
             addZombies(zom1, 13, 13);
             addCoins();
             gameTimer.Start();
-            
+            label1.Text = "Items collected: " + newPlayer.playerScore;
 
 
-           
-           
-           
+
+
+
 
         }
         public void addZombies( Zombie newZombie, int x, int y)
@@ -96,6 +96,10 @@ namespace HumansVsZombies
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.Green;
 
             }
+            if((zom.zombieXLocation == newHuman.humanXLocation)&&(zom.zombieYLocation == newHuman.humanYLocation))
+            {
+                MessageBox.Show("Youve been eaten!");
+            }
             
 
         }
@@ -109,7 +113,7 @@ namespace HumansVsZombies
                 posy = r.Next(1, 50);
 
             }
-            while (wallLocations[posx, posy] != true);
+            while (wallLocations[posx, posy] == true);
             coinLocations[posx, posy] = true;
             btn[posx, posy].BackColor = Color.Gold;
 
@@ -233,7 +237,7 @@ namespace HumansVsZombies
                 newHuman.humanYLocation = ypos;
                 
             }
-            else if ((e.KeyChar == 's')&& (wallLocations[tempX, tempY+1] != true))
+            if ((e.KeyChar == 's')&& (wallLocations[tempX, tempY+1] != true))
             {
                 btn[xpos, ypos].BackColor = Color.White;
                 ypos++;
@@ -241,7 +245,7 @@ namespace HumansVsZombies
                 newHuman.humanXLocation = xpos;
                 newHuman.humanYLocation = ypos;
             }
-            else if ((e.KeyChar == 'd')&& (wallLocations[tempX+1, tempY] != true))
+            if ((e.KeyChar == 'd')&& (wallLocations[tempX+1, tempY] != true))
             {
                 btn[xpos, ypos].BackColor = Color.White;
                 xpos++;
@@ -249,7 +253,7 @@ namespace HumansVsZombies
                 newHuman.humanXLocation = xpos;
                 newHuman.humanYLocation = ypos;
             }
-            else if ((e.KeyChar == 'a')&& (wallLocations[tempX-1, tempY] != true))
+             if ((e.KeyChar == 'a')&& (wallLocations[tempX-1, tempY] != true))
             {
                 btn[xpos, ypos].BackColor = Color.White;
                 xpos--;
@@ -262,7 +266,7 @@ namespace HumansVsZombies
             {
                 btn[xpos, ypos].BackColor = Color.White;
                 newPlayer.playerScore ++;
-                MessageBox.Show("won a coin");
+                label1.Text = "Items collected: " + newPlayer.playerScore;
                 addCoins();
 
 
