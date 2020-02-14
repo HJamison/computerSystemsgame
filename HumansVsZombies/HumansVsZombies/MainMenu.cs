@@ -12,9 +12,11 @@ namespace HumansVsZombies
 {
     public partial class MainMenu : Form
     {
+       // public Player newPlayer = new Player();
         public MainMenu()
         {
             InitializeComponent();
+            
         }
 
         private void playBtn_Click(object sender, EventArgs e)
@@ -22,6 +24,11 @@ namespace HumansVsZombies
             var newForm = new Game();
             newForm.Show();
             this.Hide();
+        }
+
+        private void MainMenu_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,12 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.highScore = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.highScore)).BeginInit();
+            this.SuspendLayout();
+            // 
+            // highScore
+            // 
+            this.highScore.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.highScore.Location = new System.Drawing.Point(238, 12);
+            this.highScore.Name = "highScore";
+            this.highScore.Size = new System.Drawing.Size(302, 368);
+            this.highScore.TabIndex = 0;
+            // 
+            // highScoreScreen
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.highScore);
+            this.Name = "highScoreScreen";
             this.Text = "highScoreScreen";
+            ((System.ComponentModel.ISupportInitialize)(this.highScore)).EndInit();
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.DataGridView highScore;
     }
 }
