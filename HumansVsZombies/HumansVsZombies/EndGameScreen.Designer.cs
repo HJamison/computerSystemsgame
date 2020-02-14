@@ -46,7 +46,7 @@
             // 
             // nameEntry
             // 
-            this.nameEntry.Location = new System.Drawing.Point(148, 228);
+            this.nameEntry.Location = new System.Drawing.Point(149, 205);
             this.nameEntry.Name = "nameEntry";
             this.nameEntry.Size = new System.Drawing.Size(162, 20);
             this.nameEntry.TabIndex = 1;
@@ -59,6 +59,7 @@
             this.playAgainButton.TabIndex = 2;
             this.playAgainButton.Text = "Play Again";
             this.playAgainButton.UseVisualStyleBackColor = true;
+            this.playAgainButton.Click += new System.EventHandler(this.playAgainButton_Click);
             // 
             // saveScore
             // 
@@ -80,6 +81,7 @@
             this.Controls.Add(this.label1);
             this.Name = "EndGameScreen";
             this.Text = "EndGameScreen";
+            this.Load += new System.EventHandler(this.EndGameScreen_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

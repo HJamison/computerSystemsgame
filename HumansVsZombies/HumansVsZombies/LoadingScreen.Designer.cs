@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(LoadingScreen));
             this.progressBar2 = new System.Windows.Forms.ProgressBar();
             this.loadingScreentimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
@@ -36,7 +37,7 @@
             // progressBar2
             // 
             this.progressBar2.Location = new System.Drawing.Point(112, 111);
-            this.progressBar2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar2.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar2.MarqueeAnimationSpeed = 500;
             this.progressBar2.Maximum = 300;
             this.progressBar2.Name = "progressBar2";
@@ -53,11 +54,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(533, 292);
             this.Controls.Add(this.progressBar2);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "LoadingScreen";
-            this.Text = "Form1";
+            this.Text = "Loading Screen";
             this.Load += new System.EventHandler(this.LoadingScreen_Load);
             this.ResumeLayout(false);
 

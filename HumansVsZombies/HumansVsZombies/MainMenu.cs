@@ -30,5 +30,15 @@ namespace HumansVsZombies
         {
 
         }
+
+        private void highscoreBtn_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            MessageBox.Show("Use WASD to move, The black dote is you! You have to collect as many gold items before the zombies eat you!");
+        }
     }
 }
