@@ -74,28 +74,28 @@ namespace HumansVsZombies
             int tempx, tempy;
             tempx = zom.zombieXLocation;
             tempy = zom.zombieYLocation;
-            if (( zom.zombieXLocation >xpos)&&(wallLocations[tempx-1, tempy] != true))
+            if ((( zom.zombieXLocation >xpos)&&(wallLocations[tempx-1, tempy] != true))&&(checkCollision(tempx - 1, tempy) == false))
             {
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.White;
                 zom.zombieXLocation--;
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.Green;
 
             }
-            if ((zom.zombieXLocation < xpos)&& (wallLocations[tempx+1, tempy] != true))
+            if (((zom.zombieXLocation < xpos)&& (wallLocations[tempx+1, tempy] != true))&& (checkCollision(tempx + 1, tempy) ==false))
             {
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.White;
                 zom.zombieXLocation++;
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.Green;
 
             }
-            if ((zom.zombieYLocation > ypos)&& (wallLocations[tempx, tempy-1] != true))
+            if (((zom.zombieYLocation > ypos)&& (wallLocations[tempx, tempy-1] != true))&& (checkCollision(tempx, tempy - 1) == false))
             {
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.White;
                 zom.zombieYLocation--;
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.Green;
 
             }
-            if ((zom.zombieYLocation < ypos)&& (wallLocations[tempx, tempy+1] != true))
+            if (((zom.zombieYLocation < ypos)&& (wallLocations[tempx, tempy+1] != true))&& (checkCollision(tempx, tempy + 1) == false))
             {
                 btn[zom.zombieXLocation, zom.zombieYLocation].BackColor = Color.White;
                 zom.zombieYLocation++;
@@ -104,10 +104,28 @@ namespace HumansVsZombies
             }
             if((zom.zombieXLocation == newHuman.humanXLocation)&&(zom.zombieYLocation == newHuman.humanYLocation))
             {
-               // MessageBox.Show("Youve been eaten!");
+               
                 gameTimer.Stop();
+                Hide();
+                var newForm = new EndGameScreen();
+                newForm.Show();
             }
             
+
+        } // code to move the zombies 
+        private bool checkCollision(int x, int y)
+        {
+            for (int i = 0; i <= zomNumber; i++)
+            {
+                if (hoarde[i] != null)
+                {
+                    if((hoarde[i].zombieXLocation == x)&&(hoarde[i].zombieYLocation ==y))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
 
         }
         private void addCoins()
@@ -274,12 +292,9 @@ namespace HumansVsZombies
                 btn[xpos, ypos].BackColor = Color.White;
                 newPlayer.playerScore ++;
                 label1.Text = "Items collected: " + newPlayer.playerScore;
-                addCoins();
+                addCoins(); // add new coins
+                coinLocations[xpos, ypos] = false; // removes the current coin location from the array
                 zomNumber++;
-                
-                
-
-
             }
 
         }
