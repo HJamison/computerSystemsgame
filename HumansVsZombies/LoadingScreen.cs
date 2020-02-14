@@ -11,34 +11,45 @@ using System.Threading;
 
 namespace HumansVsZombies
 {
+    
     public partial class LoadingScreen : Form
     {
         public LoadingScreen()
         {
             InitializeComponent();
+            loadingScreentimer.Start();
         }
 
         private void LoadingScreen_Load(object sender, EventArgs e)
         {
-            int temp = 0;
-            Thread.Sleep(1000);
-            do
-            {
-                progressBar2.Value = temp;
-                Thread.Sleep(100);
-                temp++;
-            }
-            while (temp <= 100);
-
-
-            var newForm = new MainMenu();
-            newForm.Show();
-            this.Hide();
+       
         }
 
         private void progressBar2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void loadingScreentimer_Tick(object sender, EventArgs e)
+        {
+            progressBar2.Increment(5);
+
+           
+
+
+            
+            if (progressBar2.Value >= progressBar2.Maximum)
+            {
+                loadingScreentimer.Stop();// stop the timer
+                Hide();
+                var newForm = new MainMenu();
+                newForm.Show();
+            }
         }
     }
 }

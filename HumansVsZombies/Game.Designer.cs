@@ -28,49 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.QuittoMain = new System.Windows.Forms.Button();
+            this.components = new System.ComponentModel.Container();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // button1
+            // gameTimer
             // 
-            this.button1.Location = new System.Drawing.Point(12, 412);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(127, 47);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Reset Game";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // QuittoMain
-            // 
-            this.QuittoMain.Location = new System.Drawing.Point(646, 412);
-            this.QuittoMain.Name = "QuittoMain";
-            this.QuittoMain.Size = new System.Drawing.Size(127, 47);
-            this.QuittoMain.TabIndex = 2;
-            this.QuittoMain.Text = "Quit to main menu";
-            this.QuittoMain.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button2_Click);
+            this.gameTimer.Interval = 1000;
+            this.gameTimer.Tick += new System.EventHandler(this.gameTimer_Tick);
             // 
             // Game
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(785, 488);
-            this.Controls.Add(this.QuittoMain);
-            this.Controls.Add(this.button1);
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.ClientSize = new System.Drawing.Size(1022, 576);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Game";
             this.Text = "Game";
             this.Load += new System.EventHandler(this.Game_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Game_KeyPress);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button QuittoMain;
+        private System.Windows.Forms.Timer gameTimer;
     }
 }

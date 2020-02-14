@@ -12,9 +12,11 @@ namespace HumansVsZombies
 {
     public partial class MainMenu : Form
     {
+       // public Player newPlayer = new Player();
         public MainMenu()
         {
             InitializeComponent();
+            
         }
 
         private void playBtn_Click(object sender, EventArgs e)
@@ -24,23 +26,9 @@ namespace HumansVsZombies
             this.Hide();
         }
 
-        private void highscore_Click(object sender, EventArgs e)
-        {
-            var newForm = new highScoreScreen();
-            newForm.Show();
-            this.Hide();
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        private void MainMenu_Load(object sender, EventArgs e)
         {
 
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-            var newForm = new highScoreScreen();
-            newForm.Show();
-            this.Hide();
         }
     }
 }
