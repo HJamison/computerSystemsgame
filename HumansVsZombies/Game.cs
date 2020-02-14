@@ -18,8 +18,10 @@ namespace HumansVsZombies
         Human newHuman = new Human(0, 0, 0, true);
         bool[,] wallLocations = new bool[51, 51]; // to store the location of the walls
         bool[,] coinLocations = new bool[51, 51]; // store locations of a coin
-        Zombie[] hoarde = new Zombie[6];
-        Zombie zom1 = new Zombie(13, 13);
+        Zombie[] hoarde = new Zombie[12];
+        int zomNumber = 0;
+        
+      //  Zombie zom1 = new Zombie(13, 13);
         Random r = new Random();
         Player newPlayer = new Player(" temp", 0 ); // change this later 
         public Game()
@@ -45,7 +47,11 @@ namespace HumansVsZombies
                 }
             }
             addWalls();
-            addZombies(zom1, 13, 13);
+            //addZombies(zom1, 13, 13);
+            for(int i =0; i < hoarde.Length;i ++)
+            {
+                hoarde[i] = new Zombie(14,14);
+            }
             addCoins();
             gameTimer.Start();
             label1.Text = "Items collected: " + newPlayer.playerScore;
@@ -98,7 +104,8 @@ namespace HumansVsZombies
             }
             if((zom.zombieXLocation == newHuman.humanXLocation)&&(zom.zombieYLocation == newHuman.humanYLocation))
             {
-                MessageBox.Show("Youve been eaten!");
+               // MessageBox.Show("Youve been eaten!");
+                gameTimer.Stop();
             }
             
 
@@ -268,6 +275,9 @@ namespace HumansVsZombies
                 newPlayer.playerScore ++;
                 label1.Text = "Items collected: " + newPlayer.playerScore;
                 addCoins();
+                zomNumber++;
+                
+                
 
 
             }
@@ -276,8 +286,15 @@ namespace HumansVsZombies
 
         private void gameTimer_Tick(object sender, EventArgs e)
         {
-           
-           moveZombies(zom1);
+
+            for (int i = 0; i <= zomNumber; i++)
+            {
+                if (hoarde[i] != null)
+                {
+                    moveZombies(hoarde[i]);
+                }
+            }
+
         }
     }
 }
